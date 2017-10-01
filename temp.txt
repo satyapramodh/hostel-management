@@ -1,0 +1,9 @@
+create view block as select sum(1bed.flag)as 1bed, sum(2bed.flag)as 2bed,sum(3bed.flag) as 3bed,sum(4bed.flag) as 4bed,sum(6bed.flag) as 6bed from 1bed,2bed,3bed,4bed,6bed;
+
+create view block as select 1bed, 2bed, 3bed, 4bed, 6bed
+from (select sum(1bed.flag)as 1bed) t1 cross join
+     (select sum(2bed.flag)as 2bed) t2 cross join
+     (select sum(3bed.flag)as 3bed) t3 cross join
+     (select sum(4bed.flag)as 4bed) t4 cross join
+     (select sum(6bed.flag)as 6bed) t5;
+
